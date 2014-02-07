@@ -74,5 +74,13 @@ Install-ChocolateyVsixPackage PowerShellTools http://visualstudiogallery.msdn.mi
 # Filesystem
 New-Item -Path C:\ -Name Temp -ItemType Directory
 
+# Posh Profile
+@'
+Import-Module PSReadLine
+Set-Location C:\temp
+New-Alias -Name Mute -Value Set-DefaultAudioDeviceMute
+New-Alias -Name Vol -Value Set-DefaultAudioDeviceVolume
+'@ | Set-Content $profile
+
 if (Test-PendingReboot) { Invoke-Reboot }
 
