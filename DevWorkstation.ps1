@@ -11,6 +11,7 @@ cinst SourceCodePro
 cinst GitHub
 cinst poshgit
 cinst notepadplusplus.install
+cinst VisualStudio2013Professional -InstallArguments "WebTools"
 
 # Investigating/Testing
 cinst logparser
@@ -21,6 +22,7 @@ cinst PhantomJS
 cinst GoogleChrome
 cinst Evernote5
 cinst keepass
+cinst markdownpad2
 
 # Utilities
 cinst 7zip.install
@@ -29,6 +31,7 @@ cinst sumatrapdf
 cinst vlc
 cinst dropbox
 cinst webpi
+cinst cyberduck.install
 
 # Platforms
 cinst DotNet4.5
@@ -62,6 +65,9 @@ Install-Module Pester
 Install-Module PSReadLine
 Install-Module psake
 Install-Module PoSHServer
+
+# VSIS Packages
+Install-ChocolateyVsixPackage PowerShellTools http://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597/file/112013/6/PowerShellTools.vsix
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
