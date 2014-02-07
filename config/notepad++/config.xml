@@ -97,58 +97,9 @@
         </GUIConfig>
     </GUIConfigs>
     <!-- The History of opened files list -->
-    <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no">
-        <Path name="C:\temp\fwlogs" />
-        <Path name="\\10.81.60.168\c$\Windows\System32\WindowsPowerShell\v1.0\Modules" />
-        <Path name="C:\Dropbox\Projects\octopress - Copy\sass" />
-        <Path name="C:\Dropbox\Projects\octopress - Copy" />
-        <Path name="C:\Dropbox\Projects\octopress\" />
-        <Path name="C:\Dropbox\Projects\octopress\sass" />
-        <Path name="C:\Dropbox\Projects\octopress" />
-        <Path name="\\206.132.28.230\c$\Program Files\Clarabridge\Clarabridge CMP_x64_5.1.0.29.69036\server\logs" />
-        <Path name="\\s600052sc9fs05\Fileshare3\community\EFMAdvantage\AppData\logfiles" />
-        <Path name="C:\Dropbox\Projects\octopress\source" />
-        <Filter name="*.*" />
-        <Filter name="*.psm1" />
-        <Filter name="server*" />
-        <Filter name="error201304*.log" />
-        <Find name="206.142.209.248" />
-        <Find name="get-windowsfeature" />
-        <Find name="&#x000D;&#x000A;" />
-        <Find name="DUL-CHUNT" />
-        <Find name="saml" />
-        <Find name="item&gt;" />
-        <Find name="item" />
-        <Find name="items" />
-        <Find name="data" />
-        <Find name="itme" />
-        <Replace name='&quot;, &quot;' />
-        <Replace name="MYCOMPY386" />
-        <Replace name="object&gt;" />
-        <Replace name="object" />
-        <Replace name="objects" />
-        <Replace name="items" />
-        <Replace name="item" />
-        <Replace name="images" />
-        <Replace name="&apos;" />
-        <Replace name='&quot;' />
+    <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" dlgAlwaysVisible="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no">       
     </FindHistory>
     <History nbMaxFile="15" inSubMenu="no" customLength="-1">
-        <File filename="C:\temp\mtalogs\20121014Processed.log" />
-        <File filename="C:\temp\ScriptgamesTemp\DUL-CHUNT\EnvironmentVarsFingerprint_2014-01-31.dat" />
-        <File filename="C:\Users\chunt\Documents\GitHub\2014WinterScriptGames\Event2\transcript2014-01-31.txt" />
-        <File filename="C:\temp\acl.xml" />
-        <File filename="C:\Users\chunt\Documents\GitHub\Pester\Test.xml" />
-        <File filename="C:\Windows\System32\WindowsPowerShell\v1.0\getevent.types.ps1xml" />
-        <File filename="\\10.81.60.168\c$\Windows\System32\WindowsPowerShell\v1.0\Modules\Appx\Appx.psm1" />
-        <File filename="\\10.36.2.23\fileshare3\Community\centurylink\AppData\app.config" />
-        <File filename="C:\Windows\System32\WindowsPowerShell\v1.0\DotNetTypes.format.ps1xml" />
-        <File filename="C:\Windows\System32\WindowsPowerShell\v1.0\PowerShellCore.format.ps1xml" />
-        <File filename="\\10.81.60.168\c$\Windows\System32\WindowsPowerShell\v1.0\Modules\ServerManager\Feature.format.ps1xml" />
-        <File filename="C:\Users\chunt\Documents\GitHub\Pester\bin\pester.bat" />
-        <File filename="C:\Users\chunt\Documents\GitHub\Boxstarter\installB.txt" />
-        <File filename="C:\Users\chunt\Documents\GitHub\Boxstarter\installA.txt" />
-        <File filename="C:\Users\chunt\Documents\GitHub\Boxstarter\install.bat" />
     </History>
     <ProjectPanels>
         <ProjectPanel id="0" workSpaceFile="" />
