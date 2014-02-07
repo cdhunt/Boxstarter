@@ -23,6 +23,7 @@ cinst GoogleChrome
 cinst Evernote5
 cinst keepass
 cinst markdownpad2
+cinst Office365HomePremium
 
 # Utilities
 cinst 7zip.install
@@ -32,6 +33,7 @@ cinst vlc
 cinst dropbox
 cinst webpi
 cinst cyberduck.install
+cinst OptiPNG
 
 # Platforms
 cinst DotNet4.5
@@ -68,6 +70,9 @@ Install-Module PoSHServer
 
 # VSIS Packages
 Install-ChocolateyVsixPackage PowerShellTools http://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597/file/112013/6/PowerShellTools.vsix
+
+# Filesystem
+New-Item -Path C:\ -Name Temp -ItemType Directory
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
