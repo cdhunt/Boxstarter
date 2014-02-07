@@ -9,7 +9,6 @@ cinst PsGet
 # Dev Tools
 cinst SourceCodePro
 cinst GitHub
-cinst poshgit
 cinst notepadplusplus.install
 cinst VisualStudio2013Professional -InstallArguments "WebTools"
 
@@ -36,7 +35,6 @@ cinst cyberduck.install
 cinst OptiPNG
 
 # Platforms
-cinst DotNet4.5
 cinst flashplayerplugin
 cinst AdobeAIR
 cinst javaruntime
@@ -45,10 +43,17 @@ cinst nodejs.install
 cinst ruby
 cinst golang
 
-# Console Config
-$url = 'https://raw.github.com/cdhunt/Boxstarter/master/config/console.xml'
+# Download Configs
 $wc = New-Object -TypeName System.Net.WebClient
-$wc.DownloadString($url) | Set-Content "$env:appdata\console\console.xml"
+$consoleConfig = 'https://raw.github.com/cdhunt/Boxstarter/master/config/console/console.xml'
+$npppConfig = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/config.xml'
+$npppLangs = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/langs.xml'
+$npppStylers = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/stylers.xml'
+
+$wc.DownloadString($consoleConfig) | Set-Content "$env:appdata\console\console.xml"
+$wc.DownloadString($npppConfig) | Set-Content "$env:appdata\Notepad++\config.xml"
+$wc.DownloadString($npppLangs) | Set-Content "$env:appdata\Notepad++\langs.xml"
+$wc.DownloadString($npppStylers) | Set-Content "$env:appdata\Notepad++\stylers.xml"
 
 # Windows Updates
 Install-WindowsUpdate -AcceptEula
@@ -67,6 +72,7 @@ Install-Module Pester
 Install-Module PSReadLine
 Install-Module psake
 Install-Module PoSHServer
+Install-Module posh-git
 
 # VSIS Packages
 Install-ChocolateyVsixPackage PowerShellTools http://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597/file/112013/6/PowerShellTools.vsix
@@ -77,6 +83,7 @@ New-Item -Path C:\ -Name Temp -ItemType Directory
 # Posh Profile
 @'
 Import-Module PSReadLine
+Import-Module  posh-git
 Set-Location C:\temp
 New-Alias -Name Mute -Value Set-DefaultAudioDeviceMute
 New-Alias -Name Vol -Value Set-DefaultAudioDeviceVolume
