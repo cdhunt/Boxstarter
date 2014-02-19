@@ -50,10 +50,10 @@ $npppConfig = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/
 $npppLangs = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/langs.xml'
 $npppStylers = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/stylers.xml'
 
-$wc.DownloadString($consoleConfig) | Set-Content "$env:appdata\console\console.xml" -Force
-$wc.DownloadString($npppConfig) | Set-Content "$env:appdata\Notepad++\config.xml" -Force
-$wc.DownloadString($npppLangs) | Set-Content "$env:appdata\Notepad++\langs.xml" -Force
-$wc.DownloadString($npppStylers) | Set-Content "$env:appdata\Notepad++\stylers.xml" -Force
+$wc.DownloadString($consoleConfig) | Set-Content "$env:appdata\console\console.xml" -Force -Verbose
+$wc.DownloadString($npppConfig) | Set-Content "$env:appdata\Notepad++\config.xml" -Force -Verbose
+$wc.DownloadString($npppLangs) | Set-Content "$env:appdata\Notepad++\langs.xml" -Force -Verbose
+$wc.DownloadString($npppStylers) | Set-Content "$env:appdata\Notepad++\stylers.xml" -Force -Verbose
 
 # Windows Updates
 Install-WindowsUpdate -AcceptEula
@@ -68,17 +68,17 @@ Install-ChocolateyPinnedTaskBarItem "$env:programfiles\Notepad++\notepad++.exe"
 Install-ChocolateyPinnedTaskBarItem "$env:programfiles\Evernote\Evernote\Evernote.exe"
 
 # Posh Modules Requires PSGet
-Install-Module Pester
-Install-Module PSReadLine
-Install-Module psake
-Install-Module PoSHServer
-Install-Module posh-git
+Install-Module Pester -Verbose
+Install-Module PSReadLine -Verbose
+Install-Module psake -Verbose
+Install-Module PoSHServer -Verbose
+Install-Module posh-git -Verbose
 
 # VSIS Packages
 Install-ChocolateyVsixPackage PowerShellTools http://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597/file/112013/6/PowerShellTools.vsix
 
 # Filesystem
-New-Item -Path C:\ -Name Temp -ItemType Directory
+New-Item -Path C:\ -Name Temp -ItemType Directory -Verbose
 
 # Posh Profile
 @'
@@ -87,7 +87,7 @@ Import-Module  posh-git
 Set-Location C:\temp
 New-Alias -Name Mute -Value Set-DefaultAudioDeviceMute
 New-Alias -Name Vol -Value Set-DefaultAudioDeviceVolume
-'@ | Set-Content $profile -Force
+'@ | Set-Content $profile -Force -Verbose
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
