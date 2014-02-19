@@ -50,10 +50,10 @@ $npppConfig = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/
 $npppLangs = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/langs.xml'
 $npppStylers = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/stylers.xml'
 
-$wc.DownloadString($consoleConfig) | Set-Content "$env:appdata\console\console.xml"
-$wc.DownloadString($npppConfig) | Set-Content "$env:appdata\Notepad++\config.xml"
-$wc.DownloadString($npppLangs) | Set-Content "$env:appdata\Notepad++\langs.xml"
-$wc.DownloadString($npppStylers) | Set-Content "$env:appdata\Notepad++\stylers.xml"
+$wc.DownloadString($consoleConfig) | Set-Content "$env:appdata\console\console.xml" -Force
+$wc.DownloadString($npppConfig) | Set-Content "$env:appdata\Notepad++\config.xml" -Force
+$wc.DownloadString($npppLangs) | Set-Content "$env:appdata\Notepad++\langs.xml" -Force
+$wc.DownloadString($npppStylers) | Set-Content "$env:appdata\Notepad++\stylers.xml" -Force
 
 # Windows Updates
 Install-WindowsUpdate -AcceptEula
@@ -87,7 +87,7 @@ Import-Module  posh-git
 Set-Location C:\temp
 New-Alias -Name Mute -Value Set-DefaultAudioDeviceMute
 New-Alias -Name Vol -Value Set-DefaultAudioDeviceVolume
-'@ | Set-Content $profile
+'@ | Set-Content $profile -Force
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
