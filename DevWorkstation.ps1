@@ -41,7 +41,7 @@ cinst javaruntime
 cinst java.jdk
 cinst nodejs.install
 cinst ruby
-cinst golang
+#cinst golang #package broken
 
 # Download Configs
 $wc = New-Object -TypeName System.Net.WebClient
