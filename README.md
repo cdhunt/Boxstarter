@@ -7,3 +7,7 @@ http://boxstarter.org/package/Boxstarter
 
 `Install-BoxstarterPackage -PackageName https://raw.github.com/cdhunt/Boxstarter/master/DevWorkstation.ps1 -Credential (Get-Credential)`
 `Install-BoxstarterPackage -PackageName https://raw.github.com/cdhunt/Boxstarter/master/Server2008.ps1 -Credential (Get-Credential)`
+
+or simply
+
+`http://boxstarter.org/package/nr/url?https://raw.github.com/cdhunt/Boxstarter/master/DevWorkstation.ps1`
