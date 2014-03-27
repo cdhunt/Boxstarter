@@ -1,4 +1,10 @@
+$Boxstarter.RebootOk=$true # Allow reboots?
+$Boxstarter.NoPassword=$false # Is this a machine with no login password?
+$Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
+
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showProtectedOSFiles -showFileExtensions
+Enable-RemoteDesktop
+Disable-InternetExplorerESC
 
 # Posh Tools
 cinst powershell4
@@ -11,6 +17,7 @@ cinst SourceCodePro
 cinst GitHub
 cinst notepadplusplus.install
 cinst VisualStudio2013Professional -InstallArguments "WebTools"
+if (Test-PendingReboot) { Invoke-Reboot }
 
 # Investigating/Testing
 cinst logparser
@@ -33,6 +40,7 @@ cinst dropbox
 cinst webpi
 cinst cyberduck.install
 cinst OptiPNG
+cinst easyconnect
 
 # Platforms
 cinst flashplayerplugin
@@ -41,22 +49,27 @@ cinst javaruntime
 cinst java.jdk
 cinst nodejs.install
 cinst ruby
-#cinst golang #package broken
+cinst golang
 
 # Download Configs
+<# Does not seem to work
 $wc = New-Object -TypeName System.Net.WebClient
 $consoleConfig = 'https://raw.github.com/cdhunt/Boxstarter/master/config/console/console.xml'
 $npppConfig = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/config.xml'
 $npppLangs = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/langs.xml'
 $npppStylers = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/stylers.xml'
 
-$wc.DownloadString($consoleConfig) | Set-Content "$env:appdata\console\console.xml" -Force -Verbose
-$wc.DownloadString($npppConfig) | Set-Content "$env:appdata\Notepad++\config.xml" -Force -Verbose
-$wc.DownloadString($npppLangs) | Set-Content "$env:appdata\Notepad++\langs.xml" -Force -Verbose
-$wc.DownloadString($npppStylers) | Set-Content "$env:appdata\Notepad++\stylers.xml" -Force -Verbose
+$wc.DownloadString($consoleConfig) | Set-Content "$env:appdata\console\console.xml"
+$wc.DownloadString($npppConfig) | Set-Content "$env:appdata\Notepad++\config.xml"
+$wc.DownloadString($npppLangs) | Set-Content "$env:appdata\Notepad++\langs.xml"
+$wc.DownloadString($npppStylers) | Set-Content "$env:appdata\Notepad++\stylers.xml"
+#>
+
+if (Test-PendingReboot) { Invoke-Reboot }
 
 # Windows Updates
 Install-WindowsUpdate -AcceptEula
+if (Test-PendingReboot) { Invoke-Reboot }
 
 # Taskbar items
 Install-ChocolateyPinnedTaskBarItem "$env:localappdata\Google\Chrome\Application\chrome.exe"
@@ -68,17 +81,17 @@ Install-ChocolateyPinnedTaskBarItem "$env:programfiles\Notepad++\notepad++.exe"
 Install-ChocolateyPinnedTaskBarItem "$env:programfiles\Evernote\Evernote\Evernote.exe"
 
 # Posh Modules Requires PSGet
-Install-Module Pester -Verbose
-Install-Module PSReadLine -Verbose
-Install-Module psake -Verbose
-Install-Module PoSHServer -Verbose
-Install-Module posh-git -Verbose
+Install-Module -nugetpackageid PSate
+Install-Module PSReadLine
+Install-Module psake
+Install-Module PoSHServer
+Install-Module posh-git
 
 # VSIS Packages
 Install-ChocolateyVsixPackage PowerShellTools http://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597/file/112013/6/PowerShellTools.vsix
 
 # Filesystem
-New-Item -Path C:\ -Name Temp -ItemType Directory -Verbose
+New-Item -Path C:\ -Name Temp -ItemType Directory
 
 # Posh Profile
 @'
@@ -87,7 +100,6 @@ Import-Module  posh-git
 Set-Location C:\temp
 New-Alias -Name Mute -Value Set-DefaultAudioDeviceMute
 New-Alias -Name Vol -Value Set-DefaultAudioDeviceVolume
-'@ | Set-Content $profile -Force -Verbose
+'@ | Set-Content $profile
 
 if (Test-PendingReboot) { Invoke-Reboot }
-
