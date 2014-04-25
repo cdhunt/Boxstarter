@@ -1,5 +1,6 @@
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showProtectedOSFiles -showFileExtensions
 
-cinst 7zip.install
+cinst 7zip
+cinst notepadplusplus
 cinst DotNet4.5
 cinst powershell4
