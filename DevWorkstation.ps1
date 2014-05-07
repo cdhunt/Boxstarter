@@ -16,6 +16,7 @@ cinst PsGet
 cinst SourceCodePro
 cinst GitHub
 cinst notepadplusplus.install
+cinst SourceTree
 cinst VisualStudio2013Professional -InstallArguments "WebTools"
 if (Test-PendingReboot) { Invoke-Reboot }
 
