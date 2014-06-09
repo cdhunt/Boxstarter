@@ -33,13 +33,13 @@ cinst markdownpad2
 cinst Office365HomePremium
 
 # Utilities
-cinst 7zip.install
+cinst 7zip
 cinst TeraCopy
 cinst sumatrapdf
 cinst vlc
 cinst dropbox
 cinst webpi
-cinst cyberduck.install
+cinst cyberduck
 cinst OptiPNG
 cinst easyconnect
 
@@ -48,7 +48,7 @@ cinst flashplayerplugin
 cinst AdobeAIR
 cinst javaruntime
 cinst java.jdk
-cinst nodejs.install
+cinst nodejs
 cinst ruby
 cinst golang
 
