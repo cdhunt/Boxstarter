@@ -26,11 +26,11 @@ cinst fiddler4
 cinst PhantomJS
 
 # Productivity
-cinst GoogleChrome
+#cinst GoogleChrome
 cinst Evernote5
 cinst keepass
 cinst markdownpad2
-cinst Office365HomePremium
+#cinst Office365HomePremium
 
 # Utilities
 cinst 7zip
