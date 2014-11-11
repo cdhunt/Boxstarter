@@ -25,6 +25,7 @@ choco install PhantomJS
 # Productivity
 choco install GoogleChrome
 choco install Evernote5
+choco install skitch
 choco install keepass
 choco install markdownpad2
 
