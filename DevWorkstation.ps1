@@ -2,75 +2,52 @@ $Boxstarter.RebootOk=$true # Allow reboots?
 $Boxstarter.NoPassword=$false # Is this a machine with no login password?
 $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
 
-Set-ExplorerOptions -showHidenFilesFoldersDrives -showProtectedOSFiles -showFileExtensions
-#Enable-RemoteDesktop
+Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar
+Enable-RemoteDesktop
 Disable-InternetExplorerESC
 
 # Posh Tools
-cinst powershell4
-cinst console-devel
-cinst PowerGUI
-cinst PsGet
+choco install powershell4
 
 # Dev Tools
-cinst SourceCodePro
-cinst GitHub
-cinst notepadplusplus.install
-cinst SourceTree
-cinst VisualStudio2013Professional -InstallArguments "WebTools"
-if (Test-PendingReboot) { Invoke-Reboot }
+choco install SourceCodePro
+choco install GitHub
+choco install notepadplusplus.install
+choco install SourceTree
+choco install VisualStudio2013Professional -InstallArguments "WebTools"
 
 # Investigating/Testing
-cinst logparser
-cinst fiddler4
-cinst PhantomJS
+choco install logparser
+choco install fiddler4
+choco install PhantomJS
 
 # Productivity
-#cinst GoogleChrome
-cinst Evernote5
-cinst keepass
-cinst markdownpad2
-#cinst Office365HomePremium
+choco install GoogleChrome
+choco install Evernote5
+choco install keepass
+choco install markdownpad2
 
 # Utilities
-cinst 7zip
-cinst TeraCopy
-cinst sumatrapdf
-cinst vlc
-cinst dropbox
-cinst webpi
-cinst cyberduck
-cinst OptiPNG
-cinst easyconnect
+choco install 7zip
+choco install TeraCopy
+choco install sumatrapdf.install
+choco install vlc
+choco install dropbox
+choco install webpi
+choco install cyberduck
+choco install OptiPNG
+choco install easyconnect
 
 # Platforms
-cinst flashplayerplugin
-cinst AdobeAIR
-cinst javaruntime
-cinst java.jdk
-cinst nodejs
-cinst ruby
-cinst golang
-
-# Download Configs
-<# Does not seem to work
-$wc = New-Object -TypeName System.Net.WebClient
-$consoleConfig = 'https://raw.github.com/cdhunt/Boxstarter/master/config/console/console.xml'
-$npppConfig = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/config.xml'
-$npppLangs = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/langs.xml'
-$npppStylers = 'https://raw.github.com/cdhunt/Boxstarter/master/config/notepad++/stylers.xml'
-
-$wc.DownloadString($consoleConfig) | Set-Content "$env:appdata\console\console.xml"
-$wc.DownloadString($npppConfig) | Set-Content "$env:appdata\Notepad++\config.xml"
-$wc.DownloadString($npppLangs) | Set-Content "$env:appdata\Notepad++\langs.xml"
-$wc.DownloadString($npppStylers) | Set-Content "$env:appdata\Notepad++\stylers.xml"
-#>
-
-if (Test-PendingReboot) { Invoke-Reboot }
+choco install flashplayerplugin
+choco install AdobeAIR
+choco install javaruntime
+choco install java.jdk
+choco install nodejs
+choco install golang
 
 # Windows Updates
 Install-WindowsUpdate -AcceptEula
-if (Test-PendingReboot) { Invoke-Reboot }
 
 # Taskbar items
 Install-ChocolateyPinnedTaskBarItem "$env:localappdata\Google\Chrome\Application\chrome.exe"
@@ -81,26 +58,8 @@ Install-ChocolateyPinnedTaskBarItem "$env:programfiles\KeePass Password Safe 2\K
 Install-ChocolateyPinnedTaskBarItem "$env:programfiles\Notepad++\notepad++.exe"
 Install-ChocolateyPinnedTaskBarItem "$env:programfiles\Evernote\Evernote\Evernote.exe"
 
-# Posh Modules Requires PSGet
-Install-Module -nugetpackageid PSate
-Install-Module PSReadLine
-Install-Module psake
-Install-Module PoSHServer
-Install-Module posh-git
-
 # VSIS Packages
 Install-ChocolateyVsixPackage PowerShellTools http://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597/file/112013/6/PowerShellTools.vsix
 
 # Filesystem
 New-Item -Path C:\ -Name Temp -ItemType Directory
-
-# Posh Profile
-@'
-Import-Module PSReadLine
-Import-Module  posh-git
-Set-Location C:\temp
-New-Alias -Name Mute -Value Set-DefaultAudioDeviceMute
-New-Alias -Name Vol -Value Set-DefaultAudioDeviceVolume
-'@ | Set-Content $profile
-
-if (Test-PendingReboot) { Invoke-Reboot }
