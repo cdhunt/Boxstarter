@@ -14,6 +14,7 @@ choco install SourceCodePro
 choco install GitHub
 choco install notepadplusplus.install
 choco install SourceTree
+choco install MsSqlServerManagementStudio2014Express
 choco install VisualStudio2013Professional -InstallArguments "WebTools"
 
 # Investigating/Testing
